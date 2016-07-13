@@ -1,4 +1,25 @@
-#### HTML Syntax
+## Table of Contents
+
+  1. [HTML](#html)
+  2. [CSS](#css) 
+  3. [LESS](#less) 
+
+<a name='html'></a>
+## HTML
+```html
+Use HTML5. And use HTML syntax, not XHTML. Hixie wrote some about it.
+<!--- Bad -->
+<br />
+
+<!-- Good -->
+<br>
+
+<!-- Good -->
+<!doctype html>
+
+<!-- Bad -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+```
 Use soft tabs with two spaces. You can configure your editor for this.
 
 ```html
@@ -13,46 +34,6 @@ Use soft tabs with two spaces. You can configure your editor for this.
       <ul class="nav-menu">
             <li class="nav-item">
                   <a class="nav-link">
-```
-
-Always use double quotes.
-```html
-<!-- Good -->
-<div class="main">
-
-<!-- Bad-->
-<div class='main'>
-```
-
-Separate block element by a blank line and agroup the inners block elements.
-```html
-<!-- Good -->
-<ul class="nav-tabs">
-  <li>...</li>
-  <li>...</li>
-  <li>...</li>
-  <li>...</li>
-</ul>
-
-<div class="tab-content">
-  ...
-</div>
-
-<!-- Bad-->
-<ul class="nav-tabs">
-
-  <li>...</li>
-
-  <li>...</li>
-
-  <li>...</li>
-
-  <li>...</li>
-
-</ul>
-<div class="tab-content">
-  ...
-</div>
 ```
 
 ### HTML Comments
@@ -83,7 +64,39 @@ HTML attributes should be in this order for facilitate the reading.
 <img class="img-rounded" src="..." alt="...">
 ```
 
+#### Never use style inline in HTML
 
+```html
+<a style="color:#CCC;" href="#">
+```
+
+OR
+
+```html
+  <!--/* Bad */-->
+  <section class="teaser">     
+  
+    <script>
+      var teaserConfig = {
+         skin: 0;
+      };
+    </script>
+    
+    <ul>
+      <li>Item</li>
+      <li>Item</li>
+    </ul>
+    
+    <style>
+      .teaser__title {
+        font-size: 12px;
+       }
+    </style>
+    
+  </section>
+```
+
+<a name='css'></a>
 ## CSS
 
 #### CSS Syntax
@@ -214,6 +227,20 @@ The declarations should be added in alphabetical order.
   color: #333;
   border: #333 solid 1px;
   display: block;
+}
+```
+
+CSS Border
+
+```css 
+/* Good */
+.selector-1 { 
+  border: 0;
+}
+
+/* Bad */
+.selector-1 {
+  border: none;
 }
 ```
 
@@ -361,7 +388,8 @@ Start the development with generic rules with and add media queries with mobile 
 }
 ```
 
-#### Pre-Processors
+<a name='less'></a>
+#### Pre-Processors (LESS)
 
 Provide semantic names for variables.
 
@@ -371,5 +399,57 @@ Provide semantic names for variables.
 
 /* Bad */
 @color-blue: #049cdb;
-
 ```
+
+Do not nest selectors more than three levels deep!
+
+```less 
+.page-container {
+  .content {
+    .profile {
+      // STOP!
+    }
+  }
+}
+```
+
+Media queries vars sizes.
+```less 
+- @minmobile : 280px;
+- @maxmobile : 767px;
+- @mintablet : 768px;
+- @maxtablet : 955px;
+- @mindesktop: 956px;
+- @maxdesktop: 1279px; 
+```
+
+Usage:
+
+```less 
+height: 50px;
+
+@media screen and (min-width:@minmobile) and (max-width:@maxmobile) {
+  height: 70px;
+}
+
+@media screen and (min-width:@mintablet) and (max-width:@maxtablet) {
+  height: 80px;
+}
+
+@media screen and (min-width:@mindesktop) and (max-width:@maxdesktop) {
+  height: 200px;
+}
+```
+
+Grid columns.
+```less 
+.column(1);
+...
+.column(12);
+```
+
+#### References
+- <a href="https://github.com/airbnb/css">Airbnb CSS / Sass Styleguide</a>
+- <a href="http://www.felipefialho.com/coding-style/">Felipe Fialho / My Coding Style</a>
+- <a href="https://github.com/diegocard/awesome-html5">Awesome HTML5</a> 
+- <a href="https://github.com/sotayamashita/awesome-css">Awesome CSS</a>
