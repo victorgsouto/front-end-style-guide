@@ -6,8 +6,9 @@
 
 <a name='html'></a>
 ## HTML
-```html
 Use HTML5. And use HTML syntax, not XHTML. Hixie wrote some about it.
+
+```html
 <!--- Bad -->
 <br />
 
