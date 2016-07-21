@@ -201,6 +201,95 @@ Use lowercase, shorthand hex values and avoid specifying units is zero-values.
 }
 ```
 
+#### CSS Selectors
+Select all 
+
+```css 
+* {
+ margin: 0;
+ padding: 0;
+}
+```
+
+Select all inner .container
+
+```css 
+.container * {
+ border: 1px solid black;
+}
+```
+
+Select first p after ul
+
+```css 
+ul + p {
+ color: red;
+}
+```
+
+Select only first child
+```css 
+ul > li {
+ color: red;
+}
+```
+
+Select all p after ul
+
+```css 
+ul ~ p {
+ color: red;
+}
+```
+Select attr
+```css 
+a[title] {
+ color: green;
+}
+```
+Select attr with content
+```css 
+a[href="http://www.google.com"] {
+ color: #1f6053;  
+}
+```
+Select has checked
+```css 
+input[type=radio]:checked {
+ border: 1px solid black;
+}
+```
+Select all, but not select <p>
+```css 
+*:not(p) {
+color: green;
+}
+```
+
+Select child
+```css 
+li:nth-child(3) {
+ color: red;
+}
+ 
+li:nth-last-child(2) {
+ color: red;
+}
+```
+
+Select element
+
+```css 
+ul:nth-of-type(3) {
+ border: 1px solid black;
+}
+
+ul:nth-last-of-type(3) {
+ border: 1px solid black;
+}
+
+```
+
 #### CSS Declaration Order
 
 The declarations should be added in alphabetical order.
